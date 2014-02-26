@@ -1,4 +1,4 @@
-Linux-HSA-Drivers-And-Images
-============================
+Linux-HSA-Drivers-And-Images-AMD
+================================
 
-This repository contains binary images for Linux HSA kernel and kernel drivers
+This repository contains binary images of AMD's Linux HSA kernel and kernel drivers
