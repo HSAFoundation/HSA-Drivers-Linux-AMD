@@ -1,6 +1,6 @@
 ### AMD Heterogenous System Architecture HSA - Linux Alpha 1 release for Kaveri
 
-### Installation and Configuration guide (v4)
+### Installation and Configuration guide (v5)
 
 #### Package Contents
 
@@ -26,11 +26,13 @@ This release is intended for use with a specific hardware configuration :
 * OS:             Ubuntu 13.10 64-bit edition
 * No discrete GPU present in the system
 
-If the motherboard BIOS version is lower than 0802 it must be updated. All testing has been done with the 0802 revision and we recommend you use the 0802 BIOS for now even if new versions are released. New BIOS versions can be downloaded from the ASUS support pages, at the following link. Click on “Support” in the light gray bar (under the
-black bar at the top) then choose “Other” for OS :  
+If the motherboard BIOS version is lower than 0802 it must be updated to 0802 or higher. Nearly all of our testing has been done with the 0802 BIOS although we have lightly tested the 0904 BIOS as well. 
+
+New BIOS versions can be downloaded from the ASUS support pages, starting at the URL below.  After opening the page, click on “Support” in the light gray bar (under the black bar at the top) then click on "Driver & Tools" and choose “Others” from the OS menu.
+
 http://www.asus.com/Motherboards/A88XPRO
 
-You will need to enable IOMMU in the system BIOS. This is done using the “CPU Configuration” screen under “Advanced Mode” 
+You also need to enable IOMMU in the system BIOS. This is done using the “CPU Configuration” screen under “Advanced Mode” 
 
 #### Installing and configuring the kernel
 
@@ -42,24 +44,16 @@ KERNEL=="kfd", MODE="0666"
 
 * Reboot the system to install the new kernel and enable the HSA kernel driver.
  
-#### Optional steps
-
-##### Enable SW cursors to fix cursor corruption
+##### Enabling SW cursors to fix cursor corruption
 
 The Alpha 1 release has been tested with the standard userspace graphics drivers from Ubuntu 13.10, including the "modesetting" X driver and the "llvmpipe" software-rendering GL driver. The version of modesetting driver in the alpha 1 release does not properly support the 128x128 HW cursor in Kaveri. Fixes have been pushed upstream for the modesetting driver, but the easiest way to eliminate cursor corruption is to enable SW cursors rather than the default HW cursor. 
 
 A sample xorg.conf file is included, which can be copied (as root) into /etc/X11. If you have an existing xorg.conf file you prefer, add the following line to the Device section:  
 Option "SWCursor" "yes" 
 
-#####Rebuild kernel from source 
+#####Obtaining kernel source code 
 
-Source code used to build the kernel may be downloaded with the following command : 
+Source code used to build the kernel can be downloaded with the following command : 
 `git clone -b kfd-alpha-1 git://people.freedesktop.org/~gabbayo/linux.git`
 
 The kernel config file included with this package should be renamed to .config if you want to duplicate the configuration used to create the kernel packages. 
-
-The following commands will build and package the kernel :  
-`rm -rf build; mkdir build`  
-`make -C $PWD/linux O=$PWD/build oldconfig`  
-`make -j$(nproc) -C $PWD/linux O=$PWD/build deb-pkg`  
-
