@@ -36,13 +36,31 @@ You also need to enable IOMMU in the system BIOS. This is done using the “CPU 
 
 #### Installing and configuring the kernel
 
+* Downloading the kernel binaries from the repo
+  `git clone https://github.com/HSAFoundation/Linux-HSA-Drivers-And-Images-AMD.git`
+
+* Following is the file structure of the repo
+  
+  * Linux-HSA-Drivers-And-Images-AMD/
+      * LICENSE
+      * README.md
+      * ubuntu13.10-based-alpha1/
+          * xorg.conf
+          * linux-image-3.13.0-kfd+_3.13.0-kfd+-2_amd64.deb
+          * 3.13.0-config
+
+* Go to the top of the repo:
+  `cd Linux-HSA-Drivers-And-Images-AMD`
+
 * Configure udev to allow any user to access /dev/kfd. As root, use a text editor to create /etc/udev/rules.d/kfd.rules containing one line:  
-KERNEL=="kfd", MODE="0666"
+KERNEL=="kfd", MODE="0666", Or you could use the following command:
+  `echo  "KERNEL==\"kfd\", MODE=\"0666\"" | sudo tee /etc/udev/rules.d/kfd.rules`
 
 * Install the linux-image kernel package using:  
-  `sudo dpkg -i <package file>`  
+  `sudo dpkg -i ubuntu13.10-based-alpha1/linux-image-3.13.0-kfd+_3.13.0-kfd+-2_amd64.deb`  
 
-* Reboot the system to install the new kernel and enable the HSA kernel driver.
+* Reboot the system to install the new kernel and enable the HSA kernel driver:
+  `sudo reboot`
  
 ##### Enabling SW cursors to fix cursor corruption
 
