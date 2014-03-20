@@ -1,6 +1,6 @@
 ### AMD Heterogenous System Architecture HSA - Linux Alpha 1 release for Kaveri
 
-### Installation and Configuration guide (v5)
+### Installation and Configuration guide (v6)
 
 #### Package Contents
 
@@ -72,6 +72,6 @@ Option "SWCursor" "yes"
 #####Obtaining kernel source code 
 
 Source code used to build the kernel can be downloaded with the following command : 
-`git clone -b kfd-alpha-1 git://people.freedesktop.org/~gabbayo/linux.git`
+`git clone -b alpha-1 git://people.freedesktop.org/~gabbayo/linux.git`
 
 The kernel config file included with this package should be renamed to .config if you want to duplicate the configuration used to create the kernel packages. 
