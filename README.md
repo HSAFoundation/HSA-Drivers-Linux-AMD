@@ -70,7 +70,7 @@ KERNEL=="kfd", MODE="0666", Or you could use the following command:
  
 ##### Enabling SW cursors to fix cursor corruption
 
-The Alpha 2 release has been tested with the standard userspace graphics drivers from Ubuntu 13.10, including the "modesetting" X driver and the "llvmpipe" software-rendering GL driver. The version of modesetting driver in the alpha 1 release does not properly support the 128x128 HW cursor in Kaveri. Fixes have been pushed upstream for the modesetting driver, but the easiest way to eliminate cursor corruption is to enable SW cursors rather than the default HW cursor. 
+The Alpha 2 release has been tested with the standard userspace graphics drivers from Ubuntu 13.10, including the "modesetting" X driver and the "llvmpipe" software-rendering GL driver. The version of modesetting driver in the Ubuntu 13.10 release does not properly support the 128x128 HW cursor in Kaveri. Fixes have been pushed upstream for the modesetting driver, but the easiest way to eliminate cursor corruption is to enable SW cursors rather than the default HW cursor. 
 
 A sample xorg.conf file is included, which can be copied (as root) into /etc/X11. If you have an existing xorg.conf file you prefer, add the following line to the Device section:  
 Option "SWCursor" "yes" 
