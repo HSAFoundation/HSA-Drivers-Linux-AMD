@@ -1,13 +1,19 @@
-### AMD Heterogenous System Architecture HSA - Linux Alpha 1 release for Kaveri
+### AMD Heterogenous System Architecture HSA - Linux Alpha 2 release for Kaveri
 
-### Installation and Configuration guide (v6)
+### Installation and Configuration guide (v7)
+
+#### What's New in Alpha 2
+
+* Supports wider range of Kaveri APU types
+* Kernel image built with Ubuntu 13.10 stock configuration file
+* Improved stability
 
 #### Package Contents
 
 The kernel archive contains : 
 
-* Linux kernel image: linux-image-3.13.0-kfd+_3.13.0-kfd+-2_amd64.deb
-* Copy of the config file used to build the kernel: 3.13.0-config
+* Linux kernel image: linux-image-3.13.0-kfd+_3.13.0-kfd+-7_amd64.deb
+* Copy of the config file used to build the kernel: 3.13.0-config-ubuntu-trusty
 * sample xorg.conf file
 
 The kernel image is built from a source tree based on the 3.13 upstream release plus :
@@ -44,10 +50,10 @@ You also need to enable IOMMU in the system BIOS. This is done using the “CPU 
   * Linux-HSA-Drivers-And-Images-AMD/
       * LICENSE
       * README.md
-      * ubuntu13.10-based-alpha1/
+      * ubuntu13.10-based-alpha2/
           * xorg.conf
-          * linux-image-3.13.0-kfd+_3.13.0-kfd+-2_amd64.deb
-          * 3.13.0-config
+          * linux-image-3.13.0-kfd+_3.13.0-kfd+-7_amd64.deb
+          * 3.13.0-config-ubuntu-trusty
 
 * Go to the top of the repo:
   `cd Linux-HSA-Drivers-And-Images-AMD`
@@ -57,14 +63,14 @@ KERNEL=="kfd", MODE="0666", Or you could use the following command:
   `echo  "KERNEL==\"kfd\", MODE=\"0666\"" | sudo tee /etc/udev/rules.d/kfd.rules`
 
 * Install the linux-image kernel package using:  
-  `sudo dpkg -i ubuntu13.10-based-alpha1/linux-image-3.13.0-kfd+_3.13.0-kfd+-2_amd64.deb`  
+  `sudo dpkg -i ubuntu13.10-based-alpha2/linux-image-3.13.0-kfd+_3.13.0-kfd+-7_amd64.deb
 
 * Reboot the system to install the new kernel and enable the HSA kernel driver:
   `sudo reboot`
  
 ##### Enabling SW cursors to fix cursor corruption
 
-The Alpha 1 release has been tested with the standard userspace graphics drivers from Ubuntu 13.10, including the "modesetting" X driver and the "llvmpipe" software-rendering GL driver. The version of modesetting driver in the alpha 1 release does not properly support the 128x128 HW cursor in Kaveri. Fixes have been pushed upstream for the modesetting driver, but the easiest way to eliminate cursor corruption is to enable SW cursors rather than the default HW cursor. 
+The Alpha 2 release has been tested with the standard userspace graphics drivers from Ubuntu 13.10, including the "modesetting" X driver and the "llvmpipe" software-rendering GL driver. The version of modesetting driver in the alpha 1 release does not properly support the 128x128 HW cursor in Kaveri. Fixes have been pushed upstream for the modesetting driver, but the easiest way to eliminate cursor corruption is to enable SW cursors rather than the default HW cursor. 
 
 A sample xorg.conf file is included, which can be copied (as root) into /etc/X11. If you have an existing xorg.conf file you prefer, add the following line to the Device section:  
 Option "SWCursor" "yes" 
@@ -72,6 +78,6 @@ Option "SWCursor" "yes"
 #####Obtaining kernel source code 
 
 Source code used to build the kernel can be downloaded with the following command : 
-`git clone -b alpha-1 git://people.freedesktop.org/~gabbayo/linux.git`
+`git clone -b alpha-2 git://people.freedesktop.org/~gabbayo/linux.git`
 
 The kernel config file included with this package should be renamed to .config if you want to duplicate the configuration used to create the kernel packages. 
