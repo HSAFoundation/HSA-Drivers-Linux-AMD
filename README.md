@@ -55,6 +55,7 @@ You also need to enable IOMMU in the system BIOS. This is done using the “CPU 
       * LICENSE
       * README.md
       * kfd-0.5
+        * kaveri-firmware_3.0_all.deb
         * linux-headers-3.14.0-031499_3.14.0-031499.201405041927_all.deb
         * linux-image-3.14.0-031499-generic_3.14.0-031499.201405041927_amd64.deb
         * linux-headers-3.14.0-031499-generic_3.14.0-031499.201405041927_amd64.deb
