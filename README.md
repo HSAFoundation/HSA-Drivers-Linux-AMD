@@ -1,6 +1,6 @@
 ### AMD Heterogenous System Architecture HSA - Linux kfd v0.5 release for Kaveri
 
-### Installation and Configuration guide (v1)
+### Installation and Configuration guide (v2)
 
 #### What's New in kfd v0.5
 
@@ -18,6 +18,8 @@ The kernel archive contains :
   * linux-image-3.14.0-031499-generic_3.14.0-031499.201405041927_amd64.deb
   * linux-headers-3.14.0-031499-generic_3.14.0-031499.201405041927_amd64.deb
   * linux-image-extra-3.14.0-031499-generic_3.14.0-031499.201405041927_amd64.deb
+
+* Kaveri firmware image: kaveri-firmware_3.0_all.deb
 
 The kernel image is built from a source tree based on the 3.14 upstream release plus :
 
@@ -65,8 +67,8 @@ You also need to enable IOMMU in the system BIOS. This is done using the “CPU 
 KERNEL=="kfd", MODE="0666", Or you could use the following command:
   `echo  "KERNEL==\"kfd\", MODE=\"0666\"" | sudo tee /etc/udev/rules.d/kfd.rules`
 
-* Install the linux-image kernel package using:  
-  `sudo dpkg -i kfd-0.5/linux-*.deb
+* Install the linux-image kernel package using:
+  `sudo dpkg -i kfd-0.5/*.deb
 
 * Reboot the system to install the new kernel and enable the HSA kernel driver:
   `sudo reboot`
@@ -76,3 +78,8 @@ KERNEL=="kfd", MODE="0666", Or you could use the following command:
 Source code used to build the kernel can be downloaded with the following command : 
 `git clone -b v0.5 git://people.freedesktop.org/~gabbayo/linux.git`
 
+The kernel images were built using Ubuntu mainline kernel PPA patches, which can be downloaded with the following command :
+`wget http://people.freedesktop.org/~gabbayo/kfd-v0.5/0001-base-packaging.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.5/0002-debian-changelog.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.5/0003-configs-based-on-Ubuntu-3.14.0-0.1.patch`
+
+Use the instructions in the following wiki page to built the Ubuntu kernel images:
+https://help.ubuntu.com/community/Kernel/Compile
