@@ -21,6 +21,8 @@ The kernel archive contains :
 
 * Kaveri firmware image: kaveri-firmware_3.0_all.deb
 
+* A bash script which checks if kfd is installed correctly
+
 The kernel image is built from a source tree based on the 3.14 upstream release plus :
 
 * A new HSA kernel driver ("radeon-kfd") which works with the radeon graphics driver.
@@ -54,6 +56,7 @@ You also need to enable IOMMU in the system BIOS. This is done using the “CPU 
   * Linux-HSA-Drivers-And-Images-AMD/
       * LICENSE
       * README.md
+      * kfd_check_installation.sh
       * kfd-0.5
         * kaveri-firmware_3.0_all.deb
         * linux-headers-3.14.0-031499_3.14.0-031499.201405041927_all.deb
