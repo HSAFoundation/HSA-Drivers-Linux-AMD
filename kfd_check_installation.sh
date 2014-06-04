@@ -1,6 +1,10 @@
 #!/bin/bash
 # Written by Oded Gabbay
 # oded.gabbay@amd.com
+# openSUSE support and detection of built-in modules by Joerg Roedel <jroedel@suse.de>
+
+# Add /sbin and /usr/sbin to path in case it is not already and lspci is there
+PATH=$PATH:/sbin:/usr/sbin
 
 usage()
 {
@@ -48,9 +52,9 @@ else
 	__pass_flag="NO"
 fi
 
-radeon_exists=`lsmod | grep -w radeon | awk '{print $1}' | grep -w radeon | wc -l`
-kfd_exists=`lsmod | grep -w radeon_kfd | awk '{print $1}' | grep -w radeon_kfd | wc -l`
-iommu_exists=`lsmod | grep -w amd_iommu_v2 | awk '{print $1}' | grep -w amd_iommu_v2 | wc -l`
+radeon_exists=`grep -w radeon_pci_probe /proc/kallsyms | wc -l`
+kfd_exists=`grep -w kgd2kfd_init /proc/kallsyms | wc -l`
+iommu_exists=`grep -w amd_iommu_bind_pasid /proc/kallsyms | wc -l`
 
 if [[ $radeon_exists == "1" ]]; then
 	radeon_exists_result="Yes"
