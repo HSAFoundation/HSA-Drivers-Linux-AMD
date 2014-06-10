@@ -1,6 +1,6 @@
 ### AMD Heterogenous System Architecture HSA - Linux kfd v0.5 release for Kaveri
 
-### Installation and Configuration guide (v2)
+### Installation and Configuration guide (v3)
 
 #### What's New in kfd v0.5
 
@@ -87,3 +87,8 @@ The kernel images were built using Ubuntu mainline kernel PPA patches, which can
 
 Use the instructions in the following wiki page to built the Ubuntu kernel images:
 https://help.ubuntu.com/community/Kernel/Compile
+
+Alternatively, you can compile the kernel directly by running `make` inside the kernel directory. 
+With this method, you will need to use the kernel config file located at:
+http://people.freedesktop.org/~gabbayo/kfd-v0.5/3.14.0-config-ubuntu-trusty
+
