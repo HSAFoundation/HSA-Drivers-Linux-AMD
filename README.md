@@ -1,6 +1,10 @@
-### AMD Heterogenous System Architecture HSA - Linux kfd v0.5 release for Kaveri
+### AMD Heterogenous System Architecture HSA - Linux kfd v0.5.1 release for Kaveri
 
-### Installation and Configuration guide (v3)
+### Installation and Configuration guide (v4)
+
+#### What's New in kfd v0.5.1
+
+* Fix bug in topology code that prevented kfd to load on some Motherboards
 
 #### What's New in kfd v0.5
 
@@ -14,10 +18,10 @@
 The kernel archive contains : 
 
 * Ubuntu images:
-  * linux-headers-3.14.0-031499_3.14.0-031499.201405041927_all.deb
-  * linux-image-3.14.0-031499-generic_3.14.0-031499.201405041927_amd64.deb
-  * linux-headers-3.14.0-031499-generic_3.14.0-031499.201405041927_amd64.deb
-  * linux-image-extra-3.14.0-031499-generic_3.14.0-031499.201405041927_amd64.deb
+  * linux-headers-3.14.0-031499_3.14.0-031499.201406101011_all.deb
+  * linux-headers-3.14.0-031499-generic_3.14.0-031499.201406101011_amd64.deb
+  * linux-image-3.14.0-031499-generic_3.14.0-031499.201406101011_amd64.deb
+  * linux-image-extra-3.14.0-031499-generic_3.14.0-031499.201406101011_amd64.deb
 
 * Kaveri firmware image: kaveri-firmware_3.0_all.deb
 
@@ -46,6 +50,10 @@ http://www.asus.com/Motherboards/A88XPRO
 
 You also need to enable IOMMU in the system BIOS. This is done using the “CPU Configuration” screen under “Advanced Mode” 
 
+Motherboards from other manufacturers can also work with this release. The
+motherboards must support the FM2+ socket, run latest BIOS version and have the
+IOMMU enabled in the BIOS.
+
 #### Installing and configuring the kernel
 
 * Downloading the kernel binaries from the repo
@@ -57,6 +65,12 @@ You also need to enable IOMMU in the system BIOS. This is done using the “CPU 
       * LICENSE
       * README.md
       * kfd_check_installation.sh
+      * kfd-0.5.1
+        * kaveri-firmware_3.0_all.deb
+        * linux-headers-3.14.0-031499_3.14.0-031499.201406101011_all.deb
+        * linux-headers-3.14.0-031499-generic_3.14.0-031499.201406101011_amd64.deb
+        * linux-image-3.14.0-031499-generic_3.14.0-031499.201406101011_amd64.deb
+        * linux-image-extra-3.14.0-031499-generic_3.14.0-031499.201406101011_amd64.deb
       * kfd-0.5
         * kaveri-firmware_3.0_all.deb
         * linux-headers-3.14.0-031499_3.14.0-031499.201405041927_all.deb
@@ -72,7 +86,7 @@ KERNEL=="kfd", MODE="0666", Or you could use the following command:
   `echo  "KERNEL==\"kfd\", MODE=\"0666\"" | sudo tee /etc/udev/rules.d/kfd.rules`
 
 * Install the linux-image kernel package using:
-  `sudo dpkg -i kfd-0.5/*.deb
+  `sudo dpkg -i kfd-0.5.1/*.deb
 
 * Reboot the system to install the new kernel and enable the HSA kernel driver:
   `sudo reboot`
@@ -80,7 +94,7 @@ KERNEL=="kfd", MODE="0666", Or you could use the following command:
 #####Obtaining kernel source code 
 
 Source code used to build the kernel can be downloaded with the following command : 
-`git clone -b v0.5 git://people.freedesktop.org/~gabbayo/linux.git`
+`git clone -b v0.5.1 git://people.freedesktop.org/~gabbayo/linux.git`
 
 The kernel images were built using Ubuntu mainline kernel PPA patches, which can be downloaded with the following command :
 `wget http://people.freedesktop.org/~gabbayo/kfd-v0.5/0001-base-packaging.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.5/0002-debian-changelog.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.5/0003-configs-based-on-Ubuntu-3.14.0-0.1.patch`
@@ -90,5 +104,5 @@ https://help.ubuntu.com/community/Kernel/Compile
 
 Alternatively, you can compile the kernel directly by running `make` inside the kernel directory. 
 With this method, you will need to use the kernel config file located at:
-http://people.freedesktop.org/~gabbayo/kfd-v0.5/3.14.0-config-ubuntu-trusty
+http://people.freedesktop.org/~gabbayo/kfd-v0.5.1/3.14.0-config-ubuntu-trusty
 
