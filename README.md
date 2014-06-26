@@ -8,6 +8,23 @@
 * Various bug fixes
 * Supports Ubuntu 14.04 and Fedora 21
 
+#### What's New in kfd v0.5.1
+
+* Fix bug in topology code that prevented kfd to load on some Motherboards
+
+#### What's New in kfd v0.5
+
+* Based on kernel 3.14.0
+* Supports running HSA applications in 32bit mode
+* Various bug fixes
+* Supports both Ubuntu 13.10 and Ubuntu 14.04
+
+#### What's New in Alpha 2
+
+* Supports wider range of Kaveri APU types
+* Kernel image built with Ubuntu 13.10 stock configuration file
+* Improved stability
+
 #### Package Contents
 
 The kernel archive contains : 
@@ -39,7 +56,7 @@ This release is intended for use with any hardware configuration that contains a
 The motherboards must support the FM2+ socket, run latest BIOS version and have the
 IOMMU enabled in the BIOS.
 
-The following is a refernce hardware configuration that was used for testing purposes:
+The following is a reference hardware configuration that was used for testing purposes:
 
 * APU:            AMD A10-7850K APU
 * Motherboard:    ASUS A88X-PRO motherboard (ATX form factor)
