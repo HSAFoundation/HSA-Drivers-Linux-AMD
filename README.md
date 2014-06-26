@@ -107,15 +107,15 @@ KERNEL=="kfd", MODE="0666", Or you could use the following command:
 #####Obtaining kernel source code 
 
 Source code used to build the kernel can be downloaded with the following command : 
-`git clone -b v0.6 git://people.freedesktop.org/~gabbayo/linux.git`
+`git clone -b v0.6.1 git://people.freedesktop.org/~gabbayo/linux.git`
 
 For Ubuntu, the kernel images were built using Ubuntu mainline kernel PPA patches, which can be downloaded with the following command :
-`wget http://people.freedesktop.org/~gabbayo/kfd-v0.6/0001-base-packaging.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.6/0002-debian-changelog.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.6/0003-configs-based-on-Ubuntu-END.patch`
+`wget http://people.freedesktop.org/~gabbayo/kfd-v0.6.1/0001-base-packaging.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.6.1/0002-debian-changelog.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.6.1/0003-configs-based-on-Ubuntu-END.patch`
 
 Use the instructions in the following wiki page to built the Ubuntu kernel images:
 https://help.ubuntu.com/community/Kernel/Compile
 
 Alternatively, you can compile the kernel directly by running `make` inside the kernel directory. 
 With this method, you will need to use the kernel config file located at:
-http://people.freedesktop.org/~gabbayo/kfd-v0.6/3.14.4-config-ubuntu-trusty
+http://people.freedesktop.org/~gabbayo/kfd-v0.6.1/3.14.4-config-ubuntu-trusty
 
