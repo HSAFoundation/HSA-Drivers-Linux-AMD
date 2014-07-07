@@ -1,8 +1,8 @@
-### AMD Heterogenous System Architecture HSA - Linux kfd v0.6 release for Kaveri
+### AMD Heterogenous System Architecture HSA - Linux kfd v0.6.1 release for Kaveri
 
-### Installation and Configuration guide (v1)
+### Installation and Configuration guide
 
-#### What's New in kfd v0.6
+#### What's New in kfd v0.6.1
 
 * Based on kernel 3.14.4
 * Various bug fixes
@@ -31,10 +31,10 @@ The kernel archive contains :
 
 * Ubuntu images:
   * kaveri-firmware_366_all.deb
-  * linux-headers-3.14.4-031450_3.14.4-031450.201406111231_all.deb
-  * linux-headers-3.14.4-031450-generic_3.14.4-031450.201406111231_amd64.deb
-  * linux-image-3.14.4-031450-generic_3.14.4-031450.201406111231_amd64.deb
-  * linux-image-extra-3.14.4-031450-generic_3.14.4-031450.201406111231_amd64.deb
+  * linux-headers-3.14.4-031451_3.14.4-031451.201406270144_all.deb
+  * linux-headers-3.14.4-031451-generic_3.14.4-031451.201406270144_amd64.deb
+  * linux-image-3.14.4-031451-generic_3.14.4-031451.201406270144_amd64.deb
+  * linux-image-extra-3.14.4-031451-generic_3.14.4-031451.201406270144_amd64.deb
 
 * Fedora images:
   * kernel-3.14.4-1.kfd.fc21.x86_64.rpm
@@ -75,13 +75,13 @@ The following is a reference hardware configuration that was used for testing pu
       * LICENSE
       * README.md
       * kfd_check_installation.sh
-      * kfd-0.6
+      * kfd-0.6.1
         * ubuntu
           * kaveri-firmware_366_all.deb
-          * linux-headers-3.14.4-031450_3.14.4-031450.201406111231_all.deb
-          * linux-headers-3.14.4-031450-generic_3.14.4-031450.201406111231_amd64.deb
-          * linux-image-3.14.4-031450-generic_3.14.4-031450.201406111231_amd64.deb
-          * linux-image-extra-3.14.4-031450-generic_3.14.4-031450.201406111231_amd64.deb
+          * linux-headers-3.14.4-031451_3.14.4-031451.201406270144_all.deb
+          * linux-headers-3.14.4-031451-generic_3.14.4-031451.201406270144_amd64.deb
+          * linux-image-3.14.4-031451-generic_3.14.4-031451.201406270144_amd64.deb
+          * linux-image-extra-3.14.4-031451-generic_3.14.4-031451.201406270144_amd64.deb
         * fedora
           * kernel-3.14.4-1.kfd.fc21.x86_64.rpm
           * kernel-headers-3.14.4-1.kfd.fc21.x86_64.rpm
@@ -96,10 +96,10 @@ KERNEL=="kfd", MODE="0666", Or you could use the following command:
   `echo  "KERNEL==\"kfd\", MODE=\"0666\"" | sudo tee /etc/udev/rules.d/kfd.rules`
 
 * For Ubuntu, install the linux-image kernel package using:
-  `sudo dpkg -i kfd-0.6/ubuntu/*.deb`
+  `sudo dpkg -i kfd-0.6.1/ubuntu/*.deb`
 
 * For Fedora, install the kernel package and update initramfs using:
-  `sudo yum install kfd-0.6/fedora/*.rpm ; sudo dracut --force --add-drivers "amd_iommu_v2 radeon_kfd" "/boot/initramfs-3.14.4-1.kfd.fc21.x86_64.img" 3.14.4-1.kfd.fc21.x86_64`
+  `sudo yum install kfd-0.6.1/fedora/*.rpm ; sudo dracut --force --add-drivers "amd_iommu_v2 radeon_kfd" "/boot/initramfs-3.14.4-1.kfd.fc21.x86_64.img" 3.14.4-1.kfd.fc21.x86_64`
 
 * Reboot the system to install the new kernel and enable the HSA kernel driver:
   `sudo reboot`
@@ -124,4 +124,3 @@ https://fedoraproject.org/wiki/Building_a_custom_kernel
 Alternatively, you can compile the kernel directly by running `make` inside the kernel directory. 
 With this method, you will need to use the kernel config file located at:
 http://people.freedesktop.org/~gabbayo/kfd-v0.6.1/3.14.4-config-ubuntu-trusty
-
