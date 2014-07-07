@@ -35,11 +35,11 @@ do
 	shift
 done
 
-kv_exists=`lspci -nn | grep Kaveri | wc -l`
+kv_exists=$(lspci -nn | grep -c Kaveri)
 
 if [[ $kv_exists != "0" ]]; then
 	kv_exists_result="Yes"
-	kv_type=`lspci -nn | grep Kaveri | awk '{print $12}' | awk -F':' '{print $2}' | awk -F']' '{print $1}'`
+    kv_type=$(lspci -nn | grep Kaveri | awk '{print $12}' | awk -F':' '{print $2}' | awk -F']' '{print $1}')
 	if [[ $kv_supported_types == *$kv_type* ]]; then
 		kv_type_result="Yes"
 	else
@@ -52,9 +52,9 @@ else
 	__pass_flag="NO"
 fi
 
-radeon_exists=`grep -w radeon_pci_probe /proc/kallsyms | wc -l`
-kfd_exists=`grep -w kgd2kfd_init /proc/kallsyms | wc -l`
-iommu_exists=`grep -w amd_iommu_bind_pasid /proc/kallsyms | wc -l`
+radeon_exists=$(grep -c -w radeon_pci_probe /proc/kallsyms)
+kfd_exists=$(grep -c -w kgd2kfd_init /proc/kallsyms)
+iommu_exists=$(grep -c -w amd_iommu_bind_pasid /proc/kallsyms)
 
 if [[ $radeon_exists == "1" ]]; then
 	radeon_exists_result="Yes"
@@ -62,7 +62,7 @@ if [[ $radeon_exists == "1" ]]; then
 else
 	radeon_exists_result="NO"
 	__pass_flag="NO"
-	radeon_blacklisted=`grep blacklist /etc/modprobe.d/* | grep -w radeon | wc -l`
+    radeon_blacklisted=$(grep blacklist /etc/modprobe.d/* | grep -c -w radeon)
 fi
 
 if [[ $kfd_exists == "1" ]]; then
@@ -81,7 +81,7 @@ fi
 
 if [[ -e /dev/kfd ]]; then
 	kfd_dev_exists_result="Yes"
-	kfd_perms=`stat -c %a /dev/kfd`
+    kfd_perms=$(stat -c %a /dev/kfd)
 	if [[ $kfd_supported_perms == *$kfd_perms* ]]; then
 		kfd_perms_result="Yes"
 	else
@@ -96,7 +96,7 @@ fi
 
 if [[ -e /sys/devices/virtual/kfd/kfd/topology/nodes/0/gpu_id ]]; then
 	gpu_id_result="Yes"
-	gpu_id=`cat /sys/devices/virtual/kfd/kfd/topology/nodes/0/gpu_id`
+    gpu_id=$(cat /sys/devices/virtual/kfd/kfd/topology/nodes/0/gpu_id)
 	if [[ $gpu_id == "0" ]]; then
 		gpu_id_result="NO"
 		__pass_flag="NO"
