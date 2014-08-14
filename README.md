@@ -57,11 +57,11 @@ IOMMU enabled in the BIOS.
 #### Installing and configuring the kernel
 
 * Downloading the kernel binaries from the repo
-  `git clone https://github.com/HSAFoundation/Linux-HSA-Drivers-And-Images-AMD.git`
+  `git clone https://github.com/HSAFoundation/HSA-Drivers-Linux-AMD.git`
 
 * Following is the file structure of the repo
   
-  * Linux-HSA-Drivers-And-Images-AMD/
+  * HSA-Drivers-Linux-AMD/
       * LICENSE
       * README.md
       * kfd_check_installation.sh
@@ -79,7 +79,7 @@ IOMMU enabled in the BIOS.
         * linux-image-extra-3.14.0-031499-generic_3.14.0-031499.201405041927_amd64.deb
 
 * Go to the top of the repo:
-  `cd Linux-HSA-Drivers-And-Images-AMD`
+  `cd HSA-Drivers-Linux-AMD`
 
 * Configure udev to allow any user to access /dev/kfd. As root, use a text editor to create /etc/udev/rules.d/kfd.rules containing one line:  
 KERNEL=="kfd", MODE="0666", Or you could use the following command:
