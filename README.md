@@ -67,11 +67,11 @@ The following is a reference hardware configuration that was used for testing pu
 #### Installing and configuring the kernel
 
 * Downloading the kernel binaries from the repo
-  `git clone https://github.com/HSAFoundation/Linux-HSA-Drivers-And-Images-AMD.git`
+  `git clone https://github.com/HSAFoundation/HSA-Drivers-Linux-AMD.git`
 
 * Following is the file structure of the repo
   
-  * Linux-HSA-Drivers-And-Images-AMD/
+  * HSA-Drivers-Linux-AMD/
       * LICENSE
       * README.md
       * kfd_check_installation.sh
@@ -89,7 +89,7 @@ The following is a reference hardware configuration that was used for testing pu
           * linux-firmware-20140605_kfd-38.gita4f3bc03.fc21.1.noarch.rpm
 
 * Go to the top of the repo:
-  `cd Linux-HSA-Drivers-And-Images-AMD`
+  `cd HSA-Drivers-Linux-AMD`
 
 * Configure udev to allow any user to access /dev/kfd. As root, use a text editor to create /etc/udev/rules.d/kfd.rules containing one line:  
 KERNEL=="kfd", MODE="0666", Or you could use the following command:
