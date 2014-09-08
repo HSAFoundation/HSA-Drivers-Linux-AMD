@@ -12,7 +12,7 @@
 * Supports AQL queue creation
 * Add H/W debug support
 * Various bug fixes
-* Supports Ubuntu 14.04
+* Supports Ubuntu 14.04 and Fedora 21
 
 #### What's New in kfd v0.6.1
 
@@ -47,6 +47,12 @@ The Linux drivers archive contains :
   * linux-headers-3.14.11-031450-generic_3.14.11-031450.201408121620_amd64.deb
   * linux-image-3.14.11-031450-generic_3.14.11-031450.201408121620_amd64.deb
   * linux-image-extra-3.14.11-031450-generic_3.14.11-031450.201408121620_amd64.deb
+
+* Fedora images:
+  * kernel-3.14.11-1.kfd.f21.x86_64.rpm
+  * kernel-headers-3.14.11-1.kfd.f21.x86_64.rpm
+  * kernel-modules-extra-3.14.11-1.kfd.f21.x86_64.rpm
+  * linux-firmware-20140605_kfd-38.gita4f3bc03.fc21.1.noarch.rpm
 
 * Userspace wrapper library called libhsakmt:
   * lnx/libhsakmt.so.1
@@ -97,6 +103,11 @@ testing purposes:
           * linux-headers-3.14.11-031450-generic_3.14.11-031450.201408121620_amd64.deb
           * linux-image-3.14.11-031450-generic_3.14.11-031450.201408121620_amd64.deb
           * linux-image-extra-3.14.11-031450-generic_3.14.11-031450.201408121620_amd64.deb
+        * fedora
+          * kernel-3.14.11-1.kfd.f21.x86_64.rpm
+          * kernel-headers-3.14.11-1.kfd.f21.x86_64.rpm
+          * kernel-modules-extra-3.14.11-1.kfd.f21.x86_64.rpm
+          * linux-firmware-20140605_kfd-38.gita4f3bc03.fc21.1.noarch.rpm
         * libhsakmt
           * lnx
             * libhsakmt.so.1
@@ -111,8 +122,11 @@ editor to create /etc/udev/rules.d/kfd.rules containing one line:
 KERNEL=="kfd", MODE="0666", Or you could use the following command:
   `echo  "KERNEL==\"kfd\", MODE=\"0666\"" | sudo tee /etc/udev/rules.d/kfd.rules`
 
-* Install the linux-image kernel package using:
+* For Ubuntu, install the linux-image kernel package using:
   `sudo dpkg -i kfd-0.8/ubuntu/*.deb`
+
+* For Fedora, install the kernel package and update initramfs using:
+  `sudo yum install kfd-0.8/fedora/*.rpm ; sudo dracut --force --add-drivers "amd_iommu_v2 radeon_kfd" "/boot/initramfs-3.14.11-1.kfd.fc21.x86_64.img" 3.14.11-1.kfd.fc21.x86_64`
 
 * Reboot the system to install the new kernel and enable the HSA kernel driver:
   `sudo reboot`
@@ -129,6 +143,13 @@ PPA patches, which can be downloaded with the following command :
 
 Use the instructions in the following wiki page to built the Ubuntu kernel images:
 https://help.ubuntu.com/community/Kernel/Compile
+
+For Fedora, the kernel images were built using Fedora kernel srpm,
+which can be downloaded with the following command :
+`wget http://people.freedesktop.org/~gabbayo/kfd-v0.8/kernel-3.14.11-1.kfd.fc21.src.rpm`
+
+Use the instructions in the following wiki page to built the Fedora kernel images:
+https://fedoraproject.org/wiki/Building_a_custom_kernel
 
 Alternatively, you can compile the kernel directly by running `make` inside
 the kernel directory.
