@@ -12,7 +12,7 @@
 * Supports AQL queue creation
 * Add H/W debug support
 * Various bug fixes
-* Supports Ubuntu 14.04 and Fedora 21
+* Supports Ubuntu 14.04 and Fedora 21 (with older kernel)
 
 #### What's New in kfd v0.6.1
 
@@ -130,7 +130,17 @@ KERNEL=="kfd", MODE="0666", Or you could use the following command:
 
 * Reboot the system to install the new kernel and enable the HSA kernel driver:
   `sudo reboot`
- 
+
+#####Important note regarding Fedora 21 package
+Fedora 21 daily build currently uses kernel 3.16.1
+However, kfd v0.8 is based on kernel 3.14.11.
+Therefore, our Fedora 21 kernel rpm package is based on 3.14.11 kernel. This
+means that there may be some Fedora functionality that would not behave
+correctly after our rpm package is installed.
+
+Please also note that a similar approach was used for the previous
+Fedora 21 package as well
+
 #####Obtaining kernel source code 
 
 Source code used to build the kernel can be downloaded with the following
