@@ -1,6 +1,17 @@
-### AMD Heterogenous System Architecture HSA - Linux kfd v0.8 release for Kaveri
+### AMD Heterogenous System Architecture HSA - Linux kfd v0.9 release for Kaveri
 
 ### Installation and Configuration guide
+
+#### What's New in kfd v0.9
+
+* Driver now supports over-subscription of queues and processes. This means
+  that each HSA application can open up to 1024 queues, and there can be up to
+  512 HSA applications simultaneously, compared to a total of 23 queues and 8
+  HSA processes in previous versions.
+* Better support for H/W debug
+* New Kaveri microcode which supports AQL queues
+* Various bug fixes
+* Supports Ubuntu 14.04 and Fedora 21 (with older kernel)
 
 #### What's New in kfd v0.8
 
@@ -42,17 +53,18 @@
 The Linux drivers archive contains :
 
 * Ubuntu images:
-  * kaveri-firmware_366_all.deb
-  * linux-headers-3.14.11-031450_3.14.11-031450.201408121620_all.deb
-  * linux-headers-3.14.11-031450-generic_3.14.11-031450.201408121620_amd64.deb
-  * linux-image-3.14.11-031450-generic_3.14.11-031450.201408121620_amd64.deb
-  * linux-image-extra-3.14.11-031450-generic_3.14.11-031450.201408121620_amd64.deb
+  * kaveri-firmware_379_all.deb
+  * linux-headers-3.14.11-031460_3.14.11-031460.201409270116_all.deb
+  * linux-headers-3.14.11-031460-generic_3.14.11-031460.201409270116_amd64.deb
+  * linux-image-3.14.11-031460-generic_3.14.11-031460.201409270116_amd64.deb
+  * linux-image-extra-3.14.11-031460-generic_3.14.11-031460.201409270116_amd64.deb
+
 
 * Fedora images:
-  * kernel-3.14.11-1.kfd.f21.x86_64.rpm
-  * kernel-headers-3.14.11-1.kfd.f21.x86_64.rpm
-  * kernel-modules-extra-3.14.11-1.kfd.f21.x86_64.rpm
-  * linux-firmware-20140605_kfd-38.gita4f3bc03.fc21.1.noarch.rpm
+  * kernel-3.14.11-1.kfd.fc21.x86_64.rpm
+  * kernel-headers-3.14.11-1.kfd.fc21.x86_64.rpm
+  * kernel-modules-extra-3.14.11-1.kfd.fc21.x86_64.rpm
+  * linux-firmware-20140912_kfd-39.git365e80cce.fc21.noarch.rpm
 
 * Userspace wrapper library called libhsakmt:
   * lnx/libhsakmt.so.1
@@ -90,30 +102,6 @@ testing purposes:
 * Downloading the kernel binaries from the repo
   `git clone https://github.com/HSAFoundation/HSA-Drivers-Linux-AMD.git`
 
-* Following is the file structure of the repo
-  
-  * HSA-Drivers-Linux-AMD/
-      * LICENSE
-      * README.md
-      * kfd_check_installation.sh
-      * kfd-0.8
-        * ubuntu
-          * kaveri-firmware_366_all.deb
-          * linux-headers-3.14.11-031450_3.14.11-031450.201408121620_all.deb
-          * linux-headers-3.14.11-031450-generic_3.14.11-031450.201408121620_amd64.deb
-          * linux-image-3.14.11-031450-generic_3.14.11-031450.201408121620_amd64.deb
-          * linux-image-extra-3.14.11-031450-generic_3.14.11-031450.201408121620_amd64.deb
-        * fedora
-          * kernel-3.14.11-1.kfd.f21.x86_64.rpm
-          * kernel-headers-3.14.11-1.kfd.f21.x86_64.rpm
-          * kernel-modules-extra-3.14.11-1.kfd.f21.x86_64.rpm
-          * linux-firmware-20140605_kfd-38.gita4f3bc03.fc21.1.noarch.rpm
-        * libhsakmt
-          * lnx
-            * libhsakmt.so.1
-          * lnx64a
-            * libhsakmt.so.1
-
 * Go to the top of the repo:
   `cd HSA-Drivers-Linux-AMD`
 
@@ -123,17 +111,17 @@ KERNEL=="kfd", MODE="0666", Or you could use the following command:
   `echo  "KERNEL==\"kfd\", MODE=\"0666\"" | sudo tee /etc/udev/rules.d/kfd.rules`
 
 * For Ubuntu, install the linux-image kernel package using:
-  `sudo dpkg -i kfd-0.8/ubuntu/*.deb`
+  `sudo dpkg -i kfd-0.9/ubuntu/*.deb`
 
 * For Fedora, install the kernel package and update initramfs using:
-  `sudo yum install kfd-0.8/fedora/*.rpm ; sudo dracut --force --add-drivers "amd_iommu_v2 radeon_kfd" "/boot/initramfs-3.14.11-1.kfd.fc21.x86_64.img" 3.14.11-1.kfd.fc21.x86_64`
+  `sudo yum install kfd-0.9/fedora/*.rpm ; sudo dracut --force --add-drivers "amd_iommu_v2 radeon_kfd" "/boot/initramfs-3.14.11-1.kfd.fc21.x86_64.img" 3.14.11-1.kfd.fc21.x86_64`
 
 * Reboot the system to install the new kernel and enable the HSA kernel driver:
   `sudo reboot`
 
 #####Important note regarding Fedora 21 package
-Fedora 21 daily build currently uses kernel 3.16.1
-However, kfd v0.8 is based on kernel 3.14.11.
+Fedora 21 alpha build currently uses kernel 3.16.3
+However, kfd v0.9 is based on kernel 3.14.11.
 Therefore, our Fedora 21 kernel rpm package is based on 3.14.11 kernel. This
 means that there may be some Fedora functionality that would not behave
 correctly after our rpm package is installed.
@@ -145,18 +133,18 @@ Fedora 21 package as well
 
 Source code used to build the kernel can be downloaded with the following
 command :
-`git clone -b v0.8 git://people.freedesktop.org/~gabbayo/linux.git`
+`git clone -b v0.9 git://people.freedesktop.org/~gabbayo/linux.git`
 
 For Ubuntu, the kernel images were built using Ubuntu mainline kernel
 PPA patches, which can be downloaded with the following command :
-`wget http://people.freedesktop.org/~gabbayo/kfd-v0.8/0001-base-packaging.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.8/0002-debian-changelog.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.8/0003-configs-based-on-Ubuntu-3.13.0-8.27.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.8/0004-kfd-changelog.patch`
+`wget http://people.freedesktop.org/~gabbayo/kfd-v0.9/0001-base-packaging.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.9/0002-debian-changelog.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.9/0003-configs-based-on-Ubuntu-3.13.0-8.27.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.9/0004-kfd-changelog.patch`
 
 Use the instructions in the following wiki page to built the Ubuntu kernel images:
 https://help.ubuntu.com/community/Kernel/Compile
 
 For Fedora, the kernel images were built using Fedora kernel srpm,
 which can be downloaded with the following command :
-`wget http://people.freedesktop.org/~gabbayo/kfd-v0.8/kernel-3.14.11-1.kfd.fc21.src.rpm`
+`wget http://people.freedesktop.org/~gabbayo/kfd-v0.9/kernel-3.14.11-1.kfd.fc21.src.rpm`
 
 Use the instructions in the following wiki page to built the Fedora kernel images:
 https://fedoraproject.org/wiki/Building_a_custom_kernel
@@ -164,5 +152,5 @@ https://fedoraproject.org/wiki/Building_a_custom_kernel
 Alternatively, you can compile the kernel directly by running `make` inside
 the kernel directory.
 With this method, you will need to use the kernel config file located at:
-http://people.freedesktop.org/~gabbayo/kfd-v0.8/config-3.14.11-031450-generic
+http://people.freedesktop.org/~gabbayo/kfd-v0.9/config-3.14.11-031460-generic
 
