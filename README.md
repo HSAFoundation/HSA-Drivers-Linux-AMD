@@ -166,3 +166,8 @@ the kernel directory.
 With this method, you will need to use the kernel config file located at:
 http://people.freedesktop.org/~gabbayo/kfd-v0.8/config-3.14.11-031450-generic
 
+#####Obtaining firmware binary files
+
+Firmware binary files for kaveri can be downloaded with the following command :
+`wget http://people.freedesktop.org/~gabbayo/kfd-v0.8/radeon_ucode.tar.gz`
+
