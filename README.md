@@ -59,7 +59,6 @@ The Linux drivers archive contains :
   * linux-image-3.14.11-031460-generic_3.14.11-031460.201409270116_amd64.deb
   * linux-image-extra-3.14.11-031460-generic_3.14.11-031460.201409270116_amd64.deb
 
-
 * Fedora images:
   * kernel-3.14.11-1.kfd.fc21.x86_64.rpm
   * kernel-headers-3.14.11-1.kfd.fc21.x86_64.rpm
@@ -96,6 +95,11 @@ testing purposes:
 * Memory:         G.SKILL Ripjaws X Series 16GB (2 x 8GB) 240-Pin DDR3 SDRAM DDR3 2133
 * OS:             Ubuntu 14.04 64-bit edition
 * No discrete GPU present in the system
+
+#####Important note regarding Gigabyte motherboards
+
+For Gigabyte motherboards, only BIOS version F5 is supported. 
+BIOS versions F6 and newer are known to have problems with HSA
 
 #### Installing and configuring the kernel
 
