@@ -1,6 +1,17 @@
-### AMD Heterogenous System Architecture HSA - Linux kfd v0.9 release for Kaveri
+### AMD Heterogenous System Architecture (HSA) - Linux amdkfd v1.0 release for Kaveri
 
 ### Installation and Configuration guide
+
+#### What's New in kfd v1.0
+
+* Based on newer kernel 3.17.2
+* Based on amdkfd code, which is expected to be part of Linux kernel 3.19
+* Added two new kernel module parameters:
+  * Number of HSA processes - default is 32 and maximum is 512
+  * Number of queues per HSA process - default is 128 and maximum is 1024
+* Improved Kaveri microcode
+* Various bug fixes
+* Supports Ubuntu 14.04 and Fedora 21
 
 #### What's New in kfd v0.9
 
@@ -53,17 +64,19 @@
 The Linux drivers archive contains :
 
 * Ubuntu images:
-  * kaveri-firmware_379_all.deb
-  * linux-headers-3.14.11-031460_3.14.11-031460.201409270116_all.deb
-  * linux-headers-3.14.11-031460-generic_3.14.11-031460.201409270116_amd64.deb
-  * linux-image-3.14.11-031460-generic_3.14.11-031460.201409270116_amd64.deb
-  * linux-image-extra-3.14.11-031460-generic_3.14.11-031460.201409270116_amd64.deb
+  * linux-headers-3.17.2-031450_3.17.2-031450.201412060000_all.deb
+  * linux-headers-3.17.2-031450-generic_3.17.2-031450.201412060000_amd64.deb
+  * linux-image-3.17.2-031450-generic_3.17.2-031450.201412060000_amd64.deb
+  * linux-image-extra-3.17.2-031450-generic_3.17.2-031450.201412060000_amd64.deb
+  * radeon-firmware_391_all.deb
 
 * Fedora images:
-  * kernel-3.14.11-1.kfd.fc21.x86_64.rpm
-  * kernel-headers-3.14.11-1.kfd.fc21.x86_64.rpm
-  * kernel-modules-extra-3.14.11-1.kfd.fc21.x86_64.rpm
-  * linux-firmware-20140912_kfd-39.git365e80cce.fc21.noarch.rpm
+  * kernel-3.17.2-300.amdkfd.fc21.x86_64.rpm
+  * kernel-core-3.17.2-300.amdkfd.fc21.x86_64.rpm
+  * kernel-headers-3.17.2-300.amdkfd.fc21.x86_64.rpm
+  * kernel-modules-3.17.2-300.amdkfd.fc21.x86_64.rpm
+  * kernel-modules-extra-3.17.2-300.amdkfd.fc21.x86_64.rpm
+  * linux-firmware-20141013-41.git0e5f6377.fc21.amdkfd.391.noarch.rpm
 
 * Userspace wrapper library called libhsakmt:
   * lnx/libhsakmt.so.1
@@ -71,10 +84,10 @@ The Linux drivers archive contains :
 
 * A bash script which checks if kfd is installed correctly
 
-The kernel image is built from a source tree based on the 3.14.11 upstream
+The kernel image is built from a source tree based on the 3.17.2 upstream
 release plus :
 
-* The HSA kernel driver ("radeon-kfd"), which works with the radeon
+* The HSA kernel driver ("amdkfd"), which works with the radeon
   graphics driver.
 * Fixes and improvements to the radeon and amd_iommu(v2) drivers, mm and
   mmu_notifier code.
@@ -96,70 +109,65 @@ testing purposes:
 * OS:             Ubuntu 14.04 64-bit edition
 * No discrete GPU present in the system
 
-#####Important note regarding Gigabyte motherboards
-
-For Gigabyte motherboards, only BIOS version F5 is supported. 
-BIOS versions F6 and newer are known to have problems with HSA
-
 #### Installing and configuring the kernel
 
-* Downloading the kernel binaries from the repo
-  `git clone https://github.com/HSAFoundation/HSA-Drivers-Linux-AMD.git`
+* Downloading the kernel binaries from the repo  
+`git clone https://github.com/HSAFoundation/HSA-Drivers-Linux-AMD.git`
 
-* Go to the top of the repo:
-  `cd HSA-Drivers-Linux-AMD`
+* Go to the top of the repo:  
+`cd HSA-Drivers-Linux-AMD`
 
 * Configure udev to allow any user to access /dev/kfd. As root, use a text
 editor to create /etc/udev/rules.d/kfd.rules containing one line:
-KERNEL=="kfd", MODE="0666", Or you could use the following command:
-  `echo  "KERNEL==\"kfd\", MODE=\"0666\"" | sudo tee /etc/udev/rules.d/kfd.rules`
+KERNEL=="kfd", MODE="0666", Or you could use the following command:  
+`echo  "KERNEL==\"kfd\", MODE=\"0666\"" | sudo tee /etc/udev/rules.d/kfd.rules`
 
-* For Ubuntu, install the linux-image kernel package using:
-  `sudo dpkg -i kfd-0.9/ubuntu/*.deb`
+* For Ubuntu, install the linux-image kernel package using:  
+`sudo dpkg -i kfd-1.0/ubuntu/*.deb`
 
-* For Fedora, install the kernel package and update initramfs using:
-  `sudo yum install kfd-0.9/fedora/*.rpm ; sudo dracut --force --add-drivers "amd_iommu_v2 radeon_kfd" "/boot/initramfs-3.14.11-1.kfd.fc21.x86_64.img" 3.14.11-1.kfd.fc21.x86_64`
+* For Fedora, install the kernel package and update initramfs using:  
+`sudo yum install kfd-1.0/fedora/*.rpm ; sudo dracut --force --add-drivers "amd_iommu_v2 amdkfd" "/boot/initramfs-3.17.2-300.amdkfd.fc21.x86_64.img" 3.17.2-300.amdkfd.fc21.x86_64`
 
-* Reboot the system to install the new kernel and enable the HSA kernel driver:
-  `sudo reboot`
+* Reboot the system to install the new kernel and enable the HSA kernel driver:  
+`sudo reboot`
 
-#####Important note regarding Fedora 21 package
-Fedora 21 alpha build currently uses kernel 3.16.3
-However, kfd v0.9 is based on kernel 3.14.11.
-Therefore, our Fedora 21 kernel rpm package is based on 3.14.11 kernel. This
-means that there may be some Fedora functionality that would not behave
-correctly after our rpm package is installed.
+#####Obtaining kernel and libhsakmt source code
 
-Please also note that a similar approach was used for the previous
-Fedora 21 package as well
+* Source code used to build the kernel can be downloaded with the following
+command :  
+`git clone -b v1.0 git://people.freedesktop.org/~gabbayo/linux.git`
 
-#####Obtaining kernel source code 
+* The kernel config file used to create the debian packages is located at:  
+http://people.freedesktop.org/~gabbayo/kfd-v1.0/config-3.17.2-031450-generic
 
-Source code used to build the kernel can be downloaded with the following
-command :
-`git clone -b v0.9 git://people.freedesktop.org/~gabbayo/linux.git`
+* Source code used to build the libhsakmt library can be downloaded with the
+following command :  
+`git clone -b v1.0 git://people.freedesktop.org/~gabbayo/libhsakmt`
 
-For Ubuntu, the kernel images were built using Ubuntu mainline kernel
-PPA patches, which can be downloaded with the following command :
-`wget http://people.freedesktop.org/~gabbayo/kfd-v0.9/0001-base-packaging.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.9/0002-debian-changelog.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.9/0003-configs-based-on-Ubuntu-3.13.0-8.27.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.9/0004-kfd-changelog.patch`
+* For Ubuntu, the kernel images were built using Ubuntu mainline kernel
+PPA patches, which can be downloaded with the following command :  
+`wget http://people.freedesktop.org/~gabbayo/kfd-v1.0/0001-base-packaging.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v1.0/0002-debian-changelog.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v1.0/0003-configs-based-on-Ubuntu-3.17.0-0.0.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v1.0/0004-kfd-changelog.patch`
 
-Use the instructions in the following wiki page to built the Ubuntu kernel images:
+* Use the instructions in the following wiki page to built the Ubuntu kernel images:
 https://help.ubuntu.com/community/Kernel/Compile
 
-For Fedora, the kernel images were built using Fedora kernel srpm,
-which can be downloaded with the following command :
-`wget http://people.freedesktop.org/~gabbayo/kfd-v0.9/kernel-3.14.11-1.kfd.fc21.src.rpm`
+* For Fedora, the kernel images were built using Fedora kernel srpm,
+which can be downloaded with the following command :  
+`wget http://people.freedesktop.org/~gabbayo/kfd-v1.0/kernel-3.17.2-300.amdkfd.fc21.src.rpm`
 
-Use the instructions in the following wiki page to built the Fedora kernel images:
+* Use the instructions in the following wiki page to built the Fedora kernel images:  
 https://fedoraproject.org/wiki/Building_a_custom_kernel
-
-Alternatively, you can compile the kernel directly by running `make` inside
-the kernel directory.
-With this method, you will need to use the kernel config file located at:
-http://people.freedesktop.org/~gabbayo/kfd-v0.9/config-3.14.11-031460-generic
 
 #####Obtaining firmware binary files
 
-Firmware binary files for kaveri can be downloaded with the following command :
-`wget http://people.freedesktop.org/~gabbayo/kfd-v0.9/radeon_ucode.tar.gz`
+* Firmware binary files for kaveri can be downloaded with the following command :  
+`wget http://people.freedesktop.org/~gabbayo/kfd-v1.0/radeon_ucode.tar.gz`
 
+###LICENSE
+
+The following lists the different licenses that apply to the different
+components in this repository:
+
+* the Linux kernel images are covered by the modified GPL license in COPYING
+* libhsakmt is covered by the X11 license in LICENSE.libhsakmt
+* the firmware image is covered by the license in LICENSE.ucode
