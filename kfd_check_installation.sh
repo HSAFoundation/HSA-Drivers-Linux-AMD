@@ -111,11 +111,11 @@ fi
 echo -e ""
 echo -e "Kaveri detected:............................$kv_exists_result"
 echo -e "Kaveri type supported:......................$kv_type_result"
-echo -e "Radeon module is loaded:....................$radeon_exists_result"
+echo -e "radeon module is loaded:....................$radeon_exists_result"
 if [[ ! $radeon_blacklisted == "0" ]]; then
 	echo -e "Radeon module is blacklisted!!!"
 fi
-echo -e "KFD module is loaded:.......................$kfd_exists_result"
+echo -e "amdkfd module is loaded:....................$kfd_exists_result"
 echo -e "AMD IOMMU V2 module is loaded:..............$iommu_exists_result"
 echo -e "KFD device exists:..........................$kfd_dev_exists_result"
 echo -e "KFD device has correct permissions:.........$kfd_perms_result"
