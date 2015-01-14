@@ -39,8 +39,11 @@ kv_exists=$(lspci -nn | grep -c Kaveri)
 
 if [[ $kv_exists != "0" ]]; then
 	kv_exists_result="Yes"
-	kv_type=$(lspci -nn | grep Kaveri | awk '{print $12}' | awk -F':' '{print $2}' | awk -F']' '{print $1}')
-	if [[ $kv_supported_types == *$kv_type* ]]; then
+	kv_type=$(lspci -nn | grep VGA | awk -F':' '{print $4}' | awk -F']' '{print $1}')
+	if [[ ! -n "$kv_type" ]]; then
+		kv_type_result="NO"
+		__pass_flag="NO"
+	elif [[ $kv_supported_types =~ $kv_type ]]; then
 		kv_type_result="Yes"
 	else
 		kv_type_result="NO"
