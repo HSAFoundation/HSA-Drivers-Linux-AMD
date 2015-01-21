@@ -92,6 +92,11 @@ release plus :
 * Fixes and improvements to the radeon and amd_iommu(v2) drivers, mm and
   mmu_notifier code.
 
+##### Note regarding libhsakmt compatibility
+Please note that the libhsakmt library in this repository is NOT compatible 
+with amdkfd that is distributed as part of the mainline Linux kernel 
+from 3.19 and onward.
+
 #### Target Platform
 
 This release is intended for use with any hardware configuration that
