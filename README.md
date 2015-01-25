@@ -136,6 +136,10 @@ KERNEL=="kfd", MODE="0666", Or you could use the following command:
 * Reboot the system to install the new kernel and enable the HSA kernel driver:  
 `sudo reboot`
 
+* Check the HSA driver installation:
+`cd HSA-Drivers-Linux-AMD; ./kfd_check_installation.sh`
+
+
 #####Obtaining kernel and libhsakmt source code
 
 * Source code used to build the kernel can be downloaded with the following
