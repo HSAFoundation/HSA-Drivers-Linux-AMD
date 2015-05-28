@@ -141,7 +141,7 @@ testing purposes:
 #### Installing and configuring the kernel
 
 * Downloading the kernel binaries from the repo  
-`git clone https://github.com/HSAFoundation/HSA-Drivers-Linux-AMD.git`
+`git clone -b kfd-v1.4.x https://github.com/HSAFoundation/HSA-Drivers-Linux-AMD.git`
 
 * Go to the top of the repo:  
 `cd HSA-Drivers-Linux-AMD`
