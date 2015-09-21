@@ -110,23 +110,23 @@ Source code used to build the kernel can be downloaded with the following comman
 `git clone -b v0.6.1 git://people.freedesktop.org/~gabbayo/linux.git`
 
 For Ubuntu, the kernel images were built using Ubuntu mainline kernel PPA patches, which can be downloaded with the following command :
-`wget http://people.freedesktop.org/~gabbayo/kfd-v0.6.1/0001-base-packaging.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.6.1/0002-debian-changelog.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.6.1/0003-configs-based-on-Ubuntu-END.patch`
+`wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v0.6.1/0001-base-packaging.patch ; wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v0.6.1/0002-debian-changelog.patch ; wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v0.6.1/0003-configs-based-on-Ubuntu-END.patch`
 
 Use the instructions in the following wiki page to built the Ubuntu kernel images:
 https://help.ubuntu.com/community/Kernel/Compile
 
 For Fedora, the kernel images were built using Fedora kernel srpm, which can be downloaded with the following command :
-`wget http://people.freedesktop.org/~gabbayo/kfd-v0.6.1/kernel-3.14.4-1.kfd.fc21.src.rpm`
+`wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v0.6.1/kernel-3.14.4-1.kfd.fc21.src.rpm`
 
 Use the instructions in the following wiki page to built the Fedora kernel images:
 https://fedoraproject.org/wiki/Building_a_custom_kernel
 
 Alternatively, you can compile the kernel directly by running `make` inside the kernel directory. 
 With this method, you will need to use the kernel config file located at:
-http://people.freedesktop.org/~gabbayo/kfd-v0.6.1/3.14.4-config-ubuntu-trusty
+http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v0.6.1/3.14.4-config-ubuntu-trusty
 
 #####Obtaining firmware binary files
 
 Firmware binary files for kaveri can be downloaded with the following command :
-`wget http://people.freedesktop.org/~gabbayo/kfd-v0.6.1/radeon_ucode.tar.gz`
+`wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v0.6.1/radeon_ucode.tar.gz`
 
