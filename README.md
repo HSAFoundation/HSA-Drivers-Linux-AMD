@@ -149,14 +149,14 @@ command :
 
 For Ubuntu, the kernel images were built using Ubuntu mainline kernel
 PPA patches, which can be downloaded with the following command :
-`wget http://people.freedesktop.org/~gabbayo/kfd-v0.8/0001-base-packaging.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.8/0002-debian-changelog.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.8/0003-configs-based-on-Ubuntu-3.13.0-8.27.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.8/0004-kfd-changelog.patch`
+`wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v0.8/0001-base-packaging.patch ; wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v0.8/0002-debian-changelog.patch ; wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v0.8/0003-configs-based-on-Ubuntu-3.13.0-8.27.patch ; wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v0.8/0004-kfd-changelog.patch`
 
 Use the instructions in the following wiki page to built the Ubuntu kernel images:
 https://help.ubuntu.com/community/Kernel/Compile
 
 For Fedora, the kernel images were built using Fedora kernel srpm,
 which can be downloaded with the following command :
-`wget http://people.freedesktop.org/~gabbayo/kfd-v0.8/kernel-3.14.11-1.kfd.fc21.src.rpm`
+`wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v0.8/kernel-3.14.11-1.kfd.fc21.src.rpm`
 
 Use the instructions in the following wiki page to built the Fedora kernel images:
 https://fedoraproject.org/wiki/Building_a_custom_kernel
@@ -164,10 +164,10 @@ https://fedoraproject.org/wiki/Building_a_custom_kernel
 Alternatively, you can compile the kernel directly by running `make` inside
 the kernel directory.
 With this method, you will need to use the kernel config file located at:
-http://people.freedesktop.org/~gabbayo/kfd-v0.8/config-3.14.11-031450-generic
+http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v0.8/config-3.14.11-031450-generic
 
 #####Obtaining firmware binary files
 
 Firmware binary files for kaveri can be downloaded with the following command :
-`wget http://people.freedesktop.org/~gabbayo/kfd-v0.8/radeon_ucode.tar.gz`
+`wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v0.8/radeon_ucode.tar.gz`
 
