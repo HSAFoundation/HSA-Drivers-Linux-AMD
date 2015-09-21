@@ -171,7 +171,7 @@ command :
 `git clone -b v1.4 git://people.freedesktop.org/~gabbayo/linux.git`
 
 * The kernel config file used to create the debian packages is located at:  
-http://people.freedesktop.org/~gabbayo/kfd-v1.4/config-4.0.0-040050-generic
+http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v1.4/config-4.0.0-040050-generic
 
 * Source code used to build the libhsakmt library can be downloaded with the
 following command :  
@@ -179,14 +179,14 @@ following command :
 
 * For Ubuntu, the kernel images were built using Ubuntu mainline kernel
 PPA patches, which can be downloaded with the following command :  
-`wget http://people.freedesktop.org/~gabbayo/kfd-v1.4/0001-base-packaging.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v1.4/0002-debian-changelog.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v1.4/0003-configs-based-on-Ubuntu-4.0.0-1.1.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v1.4/0004-kfd-changelog.patch`
+`wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v1.4/0001-base-packaging.patch ; wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v1.4/0002-debian-changelog.patch ; wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v1.4/0003-configs-based-on-Ubuntu-4.0.0-1.1.patch ; wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v1.4/0004-kfd-changelog.patch`
 
 * Use the instructions in the following wiki page to built the Ubuntu kernel images:
 https://help.ubuntu.com/community/Kernel/Compile
 
 * For Fedora, the kernel images were built using Fedora kernel srpm,
 which can be downloaded with the following command :  
-`wget http://people.freedesktop.org/~gabbayo/kfd-v1.4/kernel-4.0.0-1.amdkfd.fc21.src.rpm`
+`wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v1.4/kernel-4.0.0-1.amdkfd.fc21.src.rpm`
 
 * Use the instructions in the following wiki page to built the Fedora kernel images:  
 https://fedoraproject.org/wiki/Building_a_custom_kernel
@@ -194,7 +194,7 @@ https://fedoraproject.org/wiki/Building_a_custom_kernel
 #####Obtaining firmware binary files
 
 * Firmware binary files for kaveri can be downloaded with the following command :  
-`wget http://people.freedesktop.org/~gabbayo/kfd-v1.4/radeon_ucode.tar.gz`
+`wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v1.4/radeon_ucode.tar.gz`
 
 ###LICENSE
 
