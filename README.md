@@ -97,12 +97,12 @@ Source code used to build the kernel can be downloaded with the following comman
 `git clone -b v0.5.1 git://people.freedesktop.org/~gabbayo/linux.git`
 
 The kernel images were built using Ubuntu mainline kernel PPA patches, which can be downloaded with the following command :
-`wget http://people.freedesktop.org/~gabbayo/kfd-v0.5/0001-base-packaging.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.5/0002-debian-changelog.patch ; wget http://people.freedesktop.org/~gabbayo/kfd-v0.5/0003-configs-based-on-Ubuntu-3.14.0-0.1.patch`
+`wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v0.5/0001-base-packaging.patch ; wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v0.5/0002-debian-changelog.patch ; wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v0.5/0003-configs-based-on-Ubuntu-3.14.0-0.1.patch`
 
 Use the instructions in the following wiki page to built the Ubuntu kernel images:
 https://help.ubuntu.com/community/Kernel/Compile
 
 Alternatively, you can compile the kernel directly by running `make` inside the kernel directory. 
 With this method, you will need to use the kernel config file located at:
-http://people.freedesktop.org/~gabbayo/kfd-v0.5.1/3.14.0-config-ubuntu-trusty
+http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v0.5.1/3.14.0-config-ubuntu-trusty
 
