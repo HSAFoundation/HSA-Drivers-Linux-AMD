@@ -1,4 +1,4 @@
-### AMD Heterogenous System Architecture (HSA) - Linux amdkfd v1.4 release for Kaveri & Carrizo
+### AMD Heterogenous System Architecture (HSA) - Linux amdkfd v1.6 release for Kaveri & Carrizo
 
 ### Installation and Configuration guide
 
