@@ -139,8 +139,8 @@ http://cgit.freedesktop.org/~gabbayo/libhsakmt/
 This release is intended for use with any hardware configuration that
 contains a Kaveri or Carrizo APU.
 
-The motherboards must support the FM2+ socket, run latest BIOS version
-and have the IOMMU enabled in the BIOS.
+The motherboards must support run latest BIOS version and have the IOMMU
+enabled in the BIOS.
 
 The following is a reference hardware configuration that was used for
 testing purposes:
@@ -176,20 +176,19 @@ KERNEL=="kfd", MODE="0666", Or you could use the following command:
 
 #####Obtaining kernel and libhsakmt source code
 
-* Source code used to build the kernel can be foudn under the src/ folder:
-  * src/kernel-kfd-1.6.tar.gz
-  * src/libhsakmt-kfd-1.6.tar.gz
+* Source code used to build the kernel can be found under the src/ folder:
+  * src/kernel/
+  * src/libhsakmt/
 
 * For Ubuntu, the kernel images were built using Ubuntu mainline kernel
-PPA patches, which can be downloaded with the following command :  
-`wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v1.4/0001-base-packaging.patch ; wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v1.4/0002-debian-changelog.patch ; wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v1.4/0003-configs-based-on-Ubuntu-4.0.0-1.1.patch ; wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v1.4/0004-kfd-changelog.patch`
+PPA patches, are availble:
+  * src/kernel/0001-base-packaging.patch
+  * src/kernel/0002-debian-changelog.patch
+  * src/kernel/0003-configs-based-on-Ubuntu-4.0.0-1.1.patch
+  * src/kernel/0004-amd-config-for-ubuntu.patch
 
 * Use the instructions in the following wiki page to built the Ubuntu kernel images:
 https://help.ubuntu.com/community/Kernel/Compile
-
-* For Fedora, the kernel images were built using Fedora kernel srpm,
-which can be downloaded with the following command :  
-`wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v1.4/kernel-4.0.0-1.amdkfd.fc21.src.rpm`
 
 * Use the instructions in the following wiki page to built the Fedora kernel images:  
 https://fedoraproject.org/wiki/Building_a_custom_kernel
