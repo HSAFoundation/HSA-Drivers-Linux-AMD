@@ -1,0 +1,5 @@
+linux (4.0.0-040000.201504121935) vivid; urgency=medium
+
+  * Mainline build at commit: v4.0
+
+ -- Kernel Drudge <kernel@gomeisa.buildd>  Sun, 12 Apr 2015 19:35:34 -0400

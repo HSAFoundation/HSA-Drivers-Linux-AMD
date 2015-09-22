@@ -2,6 +2,24 @@
 
 ### Installation and Configuration guide
 
+#### What's New in kfd v1.6
+
+* Fix debug unregister procedure on process termination
+* Change the unmap latency and queue preempt timeout
+* Minor fix in libhsathunk for KFDMemory test
+* Fix mutex acquisition order under HSADebug
+* Fixes for process termination and cleanup
+  * Better handling of Ctrl-C for long running kernels
+* Enabled per-process CU masking
+* Enable segfault for GPU accesses to unmapped ATC memory
+* Add flat scratch support for Carrizo
+* Pre-built Fedora 21 builds currently unavailble for this release
+
+##### Known issues in this release
+
+* GPU reset on Kaveri can cause system hangs.
+  * Disable GPU reset through the linux commandline parameter radeon.lockup_timeout=0
+
 #### What's New in kfd v1.4
 
 * Based on kernel 4.0.0
@@ -82,22 +100,17 @@
 The Linux drivers archive contains :
 
 * Ubuntu images:
-  * linux-headers-4.0.0-040050_4.0.0-040050.201505271752_all.deb
-  * linux-headers-4.0.0-040050-generic_4.0.0-040050.201505271752_amd64.deb
-  * linux-image-4.0.0-040050-generic_4.0.0-040050.201505271752_amd64.deb
-  * linux-image-extra-4.0.0-040050-generic_4.0.0-040050.201505271752_amd64.deb
-  * radeon-firmware_402-567_all.deb
+  * linux-headers-4.0.0-100050_4.0.0-100050.201509161230_all.deb
+  * linux-headers-4.0.0-100050-generic_4.0.0-100050.201509161230_amd64.deb
+  * linux-image-4.0.0-100050-generic_4.0.0-100050.201509161230_amd64.deb
+  * linux-image-extra-4.0.0-100050-generic_4.0.0-100050.201509161230_amd64.deb
+  * radeon-firmware_410-604_all.deb
 
 * Fedora images:
-  * kernel-4.0.0-1.amdkfd.fc21.x86_64.rpm
-  * kernel-core-4.0.0-1.amdkfd.fc21.x86_64.rpm
-  * kernel-headers-4.0.0-1.amdkfd.fc21.x86_64.rpm
-  * kernel-modules-4.0.0-1.amdkfd.fc21.x86_64.rpm
-  * kernel-modules-extra-4.0.0-1.amdkfd.fc21.x86_64.rpm
-  * linux-firmware-20150410-51.gitec89525b.fc21.amdkfd.402_567.noarch.rpm
+  * Fedora release is currently unavailable for KFD 1.6
 
 * Userspace wrapper library called libhsakmt:
-  * libhsakmt.so.1
+  * libhsakmt_1.6.0_amd64.deb
 
 * A bash script which checks if kfd is installed correctly
 
@@ -124,7 +137,7 @@ http://cgit.freedesktop.org/~gabbayo/libhsakmt/
 #### Target Platform
 
 This release is intended for use with any hardware configuration that
-contains a Kaveri APU.
+contains a Kaveri or Carrizo APU.
 
 The motherboards must support the FM2+ socket, run latest BIOS version
 and have the IOMMU enabled in the BIOS.
@@ -141,7 +154,7 @@ testing purposes:
 #### Installing and configuring the kernel
 
 * Downloading the kernel binaries from the repo  
-`git clone -b kfd-v1.4.x https://github.com/HSAFoundation/HSA-Drivers-Linux-AMD.git`
+`git clone -b kfd-v1.6.x https://github.com/HSAFoundation/HSA-Drivers-Linux-AMD.git`
 
 * Go to the top of the repo:  
 `cd HSA-Drivers-Linux-AMD`
@@ -152,10 +165,7 @@ KERNEL=="kfd", MODE="0666", Or you could use the following command:
 `echo  "KERNEL==\"kfd\", MODE=\"0666\"" | sudo tee /etc/udev/rules.d/kfd.rules`
 
 * For Ubuntu, install the linux-image kernel package using:  
-`sudo dpkg -i kfd-1.4/ubuntu/*.deb`
-
-* For Fedora, install the kernel package and update initramfs using:  
-`sudo yum install kfd-1.4/fedora/*.rpm ; sudo dracut --force --add-drivers "amd_iommu_v2 amdkfd" "/boot/initramfs-4.0.0-1.amdkfd.fc21.x86_64.img" 4.0.0-1.amdkfd.fc21.x86_64`
+`sudo dpkg -i kfd-1.6/ubuntu/*.deb`
 
 * Reboot the system to install the new kernel and enable the HSA kernel driver:  
 `sudo reboot`
@@ -166,16 +176,9 @@ KERNEL=="kfd", MODE="0666", Or you could use the following command:
 
 #####Obtaining kernel and libhsakmt source code
 
-* Source code used to build the kernel can be downloaded with the following
-command :  
-`git clone -b v1.4 git://people.freedesktop.org/~gabbayo/linux.git`
-
-* The kernel config file used to create the debian packages is located at:  
-http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v1.4/config-4.0.0-040050-generic
-
-* Source code used to build the libhsakmt library can be downloaded with the
-following command :  
-`git clone -b v1.4 git://people.freedesktop.org/~gabbayo/libhsakmt`
+* Source code used to build the kernel can be foudn under the src/ folder:
+  * src/kernel-kfd-1.6.tar.gz
+  * src/libhsakmt-kfd-1.6.tar.gz
 
 * For Ubuntu, the kernel images were built using Ubuntu mainline kernel
 PPA patches, which can be downloaded with the following command :  
@@ -193,8 +196,7 @@ https://fedoraproject.org/wiki/Building_a_custom_kernel
 
 #####Obtaining firmware binary files
 
-* Firmware binary files for kaveri can be downloaded with the following command :  
-`wget http://people.freedesktop.org/~gabbayo/amdkfd/kfd-v1.4/radeon_ucode.tar.gz`
+* Firmware binary files for Carrizo and Kaver are included in radeon-firmware_410-604_all.deb
 
 ###LICENSE
 
