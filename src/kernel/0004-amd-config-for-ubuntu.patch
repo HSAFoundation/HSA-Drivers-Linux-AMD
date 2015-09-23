@@ -1,0 +1,35 @@
+From da44616980a5359fe61da4610f0f4e0357e17f4c Mon Sep 17 00:00:00 2001
+From: Andres Rodriguez <andres.rodriguez@amd.com>
+Date: Thu, 17 Sep 2015 11:41:05 -0400
+Subject: [PATCH] amd config for ubuntu
+
+---
+ debian.master/config/config.common.ubuntu | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/debian.master/config/config.common.ubuntu b/debian.master/config/config.common.ubuntu
+index 7da9048..0def18c 100644
+--- a/debian.master/config/config.common.ubuntu
++++ b/debian.master/config/config.common.ubuntu
+@@ -1647,7 +1647,7 @@ CONFIG_DEVFREQ_GOV_POWERSAVE=y
+ CONFIG_DEVFREQ_GOV_SIMPLE_ONDEMAND=y
+ CONFIG_DEVFREQ_GOV_USERSPACE=y
+ # CONFIG_DEVKMEM is not set
+-# CONFIG_DEVMEM is not set
++CONFIG_DEVMEM=y
+ CONFIG_DEVPORT=y
+ CONFIG_DEVPTS_MULTIPLE_INSTANCES=y
+ CONFIG_DEVTMPFS=y
+@@ -1734,6 +1734,9 @@ CONFIG_DRA752_THERMAL=y
+ CONFIG_DRAGONRISE_FF=y
+ # CONFIG_DRBD_FAULT_INJECTION is not set
+ CONFIG_DRM=m
++CONFIG_DRM_AMDGPU=m
++CONFIG_DRM_AMDGPU_CIK=y
++# CONFIG_DRM_AMDGPU_USERPTR is not set
+ CONFIG_DRM_ARMADA=m
+ CONFIG_DRM_AST=m
+ CONFIG_DRM_ATMEL_HLCDC=m
+-- 
+2.5.0
+
