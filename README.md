@@ -17,10 +17,10 @@
 
 ##### Known issues in this release
 
-* GPU reset on Kaveri can cause system hangs.
+* GPU reset on Kaveri can cause system hangs
   * Disable GPU reset through the linux boot string parameter radeon.lockup_timeout=0
   * If needed, corresponding parameter for Carrizo is amdgpu.lockup_timeout=0
-
+* Individual wavefronts (not kernels) which execute for >4s may fail 
 
 #### What's New in kfd v1.4
 
