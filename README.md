@@ -4,6 +4,10 @@
 
 #### What's New in kfd v1.6
 
+* Fix BUG when faulting a PROT\_NONE VMA
+
+#### What's New in kfd v1.6
+
 * Fix debug unregister procedure on process termination
 * Change the unmap latency and queue preempt timeout
 * Minor fix in libhsathunk for KFDMemory test
