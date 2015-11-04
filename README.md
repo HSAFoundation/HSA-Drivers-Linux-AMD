@@ -1,8 +1,8 @@
-### AMD Heterogenous System Architecture (HSA) - Linux amdkfd v1.6 release for Kaveri & Carrizo
+### AMD Heterogenous System Architecture (HSA) - Linux amdkfd v1.6.1 release for Kaveri & Carrizo
 
 ### Installation and Configuration guide
 
-#### What's New in kfd v1.6
+#### What's New in kfd v1.6.1
 
 * Fix BUG when faulting a PROT\_NONE VMA
 
