@@ -1,4 +1,4 @@
-# These drivers have been supercedded by ROCm Platform  now hosted at Radeon Open Compute GitHub Repo https://github.com/RadeonOpenCompute 
+## These drivers have been supercedded by ROCm Platform  now hosted at Radeon Open Compute GitHub Repo https://github.com/RadeonOpenCompute 
 
 ### To install the new driver follow the instructions at https://radeonopencompute.github.io/install.html  
 
