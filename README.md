@@ -1,4 +1,6 @@
-# These drivers have been supercedded by ROCm Platform  now hosted at Radeon Open Compute GitHub Repo https://github.com/RadeonOpenCompute to install the new driver follow the instructions at https://radeonopencompute.github.io/install.html  
+# These drivers have been supercedded by ROCm Platform  now hosted at Radeon Open Compute GitHub Repo https://github.com/RadeonOpenCompute 
+
+### To install the new driver follow the instructions at https://radeonopencompute.github.io/install.html  
 
 ### If you want to find out more about  ROCm platform and how it uses HSA Technologies you can goto  https://radeonopencompute.github.io 
 
