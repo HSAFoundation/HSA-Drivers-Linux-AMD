@@ -1,3 +1,9 @@
+# These drivers have been supercedded by ROCm Platform  now hosted at Radeon Open Compute GitHub Repo https://github.com/RadeonOpenCompute to install the new driver follow the instructions at https://radeonopencompute.github.io/install.html  
+
+### If you want to find out more about  ROCm platform and how it uses HSA Technologies you can goto  https://radeonopencompute.github.io 
+
+
+
 ### AMD Heterogenous System Architecture (HSA) - Linux amdkfd v1.6.1 release for Kaveri & Carrizo
 
 ### Installation and Configuration guide
