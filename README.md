@@ -6,15 +6,15 @@
 
 
 
-### AMD Heterogenous System Architecture (HSA) - Linux amdkfd v1.6.1 release for Kaveri & Carrizo
+#### AMD Heterogenous System Architecture (HSA) - Linux amdkfd v1.6.1 release for Kaveri & Carrizo
 
-### Installation and Configuration guide
+#### Installation and Configuration guide
 
-#### What's New in kfd v1.6.1
+##### What's New in kfd v1.6.1
 
 * Fix BUG when faulting a PROT\_NONE VMA
 
-#### What's New in kfd v1.6
+##### What's New in kfd v1.6
 
 * Fix debug unregister procedure on process termination
 * Change the unmap latency and queue preempt timeout
@@ -34,25 +34,25 @@
   * If needed, corresponding parameter for Carrizo is amdgpu.lockup_timeout=0
 * Individual wavefronts (not kernels) which execute for >4s may fail 
 
-#### What's New in kfd v1.4
+##### What's New in kfd v1.4
 
 * Based on kernel 4.0.0
 * Add support for Carrizo APU
 * Uses new AMD's kernel graphic driver, amdgpu, for Carrizo
 * Supports Ubuntu 14.04 and Fedora 21
 
-#### What's New in kfd v1.2
+##### What's New in kfd v1.2
 
 * Based on kernel 3.19.0
 * Improved Kaveri microcode
 * Various bug fixes
 * Supports Ubuntu 14.04 and Fedora 21
 
-##### Known issues in this release
+###### Known issues in this release
 
 * SDMA queues are not working
 
-#### What's New in kfd v1.0
+##### What's New in kfd v1.0
 
 * Based on newer kernel 3.17.2
 * Based on amdkfd code, which is expected to be part of Linux kernel 3.19
@@ -63,7 +63,7 @@
 * Various bug fixes
 * Supports Ubuntu 14.04 and Fedora 21
 
-#### What's New in kfd v0.9
+##### What's New in kfd v0.9
 
 * Driver now supports over-subscription of queues and processes. This means
   that each HSA application can open up to 1024 queues, and there can be up to
@@ -74,7 +74,7 @@
 * Various bug fixes
 * Supports Ubuntu 14.04 and Fedora 21 (with older kernel)
 
-#### What's New in kfd v0.8
+##### What's New in kfd v0.8
 
 * Based on kernel 3.14.11
 * Supports HSA signals (kfd events)
@@ -86,30 +86,30 @@
 * Various bug fixes
 * Supports Ubuntu 14.04 and Fedora 21 (with older kernel)
 
-#### What's New in kfd v0.6.1
+##### What's New in kfd v0.6.1
 
 * Based on kernel 3.14.4
 * Various bug fixes
 * Supports Ubuntu 14.04 and Fedora 21
 
-#### What's New in kfd v0.5.1
+##### What's New in kfd v0.5.1
 
 * Fix bug in topology code that prevented kfd to load on some Motherboards
 
-#### What's New in kfd v0.5
+##### What's New in kfd v0.5
 
 * Based on kernel 3.14.0
 * Supports running HSA applications in 32bit mode
 * Various bug fixes
 * Supports both Ubuntu 13.10 and Ubuntu 14.04
 
-#### What's New in Alpha 2
+##### What's New in Alpha 2
 
 * Supports wider range of Kaveri APU types
 * Kernel image built with Ubuntu 13.10 stock configuration file
 * Improved stability
 
-#### Package Contents
+##### Package Contents
 
 The Linux drivers archive contains :
 
@@ -165,7 +165,7 @@ testing purposes:
 * OS:             Ubuntu 14.04 64-bit edition
 * No discrete GPU present in the system
 
-#### Installing and configuring the kernel
+##### Installing and configuring the kernel
 
 * Downloading the kernel binaries from the repo  
 `git clone -b kfd-v1.6.x https://github.com/HSAFoundation/HSA-Drivers-Linux-AMD.git`
@@ -188,7 +188,7 @@ KERNEL=="kfd", MODE="0666", Or you could use the following command:
 `cd HSA-Drivers-Linux-AMD; ./kfd_check_installation.sh`
 
 
-#####Obtaining kernel and libhsakmt source code
+######Obtaining kernel and libhsakmt source code
 
 * Source code used to build the kernel can be found under the src/ folder:
   * src/kernel/
@@ -207,11 +207,11 @@ https://help.ubuntu.com/community/Kernel/Compile
 * Use the instructions in the following wiki page to built the Fedora kernel images:  
 https://fedoraproject.org/wiki/Building_a_custom_kernel
 
-#####Obtaining firmware binary files
+######Obtaining firmware binary files
 
 * Firmware binary files for Carrizo and Kaver are included in radeon-firmware_410-604_all.deb
 
-###LICENSE
+####LICENSE
 
 The following lists the different licenses that apply to the different
 components in this repository:
